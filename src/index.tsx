@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { CounterApp } from './components/01-useState/CounterApp';
+import { CounterCustomHook } from './components/01-useState/CounterCustomHook';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CounterApp />
+    <CounterCustomHook />
   </React.StrictMode>,
   document.getElementById('root')
 );
