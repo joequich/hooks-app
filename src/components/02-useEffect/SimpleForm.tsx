@@ -35,14 +35,14 @@ export const SimpleForm = () => {
             <h1>useEffect</h1>
             <hr />
 
-            <div className="form-group">
+            <div className="mb-3">
                 <input type="text" name="name" className="form-control" placeholder="Your name" aria-placeholder="Your name" autoComplete="off" 
                     value={name}
                     onChange={handleInputChange}
                  />
             </div>
 
-            <div className="form-group">
+            <div className="mb-3">
                 <input type="text" name="email" className="form-control" placeholder="email@example.com" aria-placeholder="email@example.com" autoComplete="off" 
                     value={email}
                     onChange={handleInputChange}
