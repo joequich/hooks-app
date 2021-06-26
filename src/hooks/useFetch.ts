@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 interface IFetch {
     data: IQuote[];
@@ -14,18 +14,30 @@ interface IQuote {
 }
 
 export const useFetch = ( url: string ) => {
+
+    const isMounted = useRef(true);
     const [state, setState] = useState<IFetch>({ data: [], loading: true, error: null });
+
+    useEffect(() => {
+        return () => {
+            isMounted.current = false;
+        }
+    }, [])
     
     useEffect( () => {
         setState({ data: [], loading: true, error: null });
         fetch(url)
             .then(resp => resp.json())
             .then(data => {
-                setState({
-                    loading: false,
-                    error: null,
-                    data
-                });
+                setTimeout(() => {
+                    if (isMounted.current) {
+                        setState({
+                            loading: false,
+                            error: null,
+                            data
+                        });
+                    }
+                }, 4000);
             });
     },[url]);
 
