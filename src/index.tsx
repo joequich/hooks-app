@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { LayoutEffect } from './components/05-useLayoutEffect/LayoutEffect';
+import { Memorize } from './components/06-memos/Memorize';
 
 ReactDOM.render(
   <React.StrictMode>
-    <LayoutEffect />
+    <Memorize />
   </React.StrictMode>,
   document.getElementById('root')
 );
