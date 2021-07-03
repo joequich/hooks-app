@@ -34,7 +34,7 @@ export const MultipleCustomHooks = () => {
                     )
             }
             <div className="text-end">
-                <button className="btn btn-primary text-end" onClick={() => increment(1)}>Next quote</button>
+                <button className="btn btn-primary text-end" onClick={ increment }>Next quote</button>
             </div>
         </div>
     )

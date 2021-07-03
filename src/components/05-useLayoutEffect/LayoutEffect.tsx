@@ -28,7 +28,7 @@ export const LayoutEffect = () => {
                 </figure>
                 <pre>{ JSON.stringify(boxSize, null, 3) }</pre>
             <div className="text-end">
-                <button className="btn btn-primary text-end" onClick={() => increment(1)}>Next quote</button>
+                <button className="btn btn-primary text-end" onClick={ increment }>Next quote</button>
             </div>
         </div>
     )

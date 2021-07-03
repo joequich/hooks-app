@@ -8,9 +8,9 @@ export const CounterCustomHook = () => {
         <>
             <h1>Counter with Hooks: {counter}</h1>
             <hr />
-            <button className="btn" onClick={ () => increment(1) }>+1</button>
+            <button className="btn" onClick={ increment }>+1</button>
             <button className="btn" onClick={ reset }>Reset</button>
-            <button className="btn" onClick={ () => decrement(1) }>-1</button>
+            <button className="btn" onClick={ decrement }>-1</button>
         </>
     );
 };
