@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { RealExampleRef } from './components/04-useRef/RealExampleRef';
+import { LayoutEffect } from './components/05-useLayoutEffect/LayoutEffect';
 
 ReactDOM.render(
   <React.StrictMode>
-    <RealExampleRef />
+    <LayoutEffect />
   </React.StrictMode>,
   document.getElementById('root')
 );
