@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Father } from './components/07-homework-memo/Father';
+import { TodoApp } from './components/08-useReducer/TodoApp';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Father />
+    <TodoApp />
   </React.StrictMode>,
   document.getElementById('root')
 );
