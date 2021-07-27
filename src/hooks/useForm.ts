@@ -1,8 +1,12 @@
 import { ChangeEvent, useState } from "react";
 
-export const useForm: (initialState?: object) => [values: object, handleInputChange: ({ target }: ChangeEvent<HTMLInputElement>) => void] = (initialState = {}) => {
+export const useForm: (initialState: object) => [values: any, handleInputChange: ({ target }: ChangeEvent<HTMLInputElement>) => void, reset: () => void] = (initialState) => {
    
     const [values, setValues] = useState(initialState);
+
+    const reset = () => {
+        setValues(initialState);
+    }
 
     const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
         setValues({
@@ -11,5 +15,5 @@ export const useForm: (initialState?: object) => [values: object, handleInputCha
         });
     };
 
-    return [values, handleInputChange];
+    return [values, handleInputChange, reset];
 };

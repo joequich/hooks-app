@@ -1,24 +1,41 @@
 import React, { FormEvent, useReducer } from 'react';
+import { useEffect } from 'react';
+import { useForm } from '../../hooks/useForm';
 
 import './styles.css';
 import { todoReducer, IStateTodo } from './todoReducer';
 
+interface FormValues {
+    description: string;
+}
+
+const init: () => IStateTodo[] | [] = () => {
+    return JSON.parse(localStorage.getItem('todos')||'[]');
+}
+
 export const TodoApp = () => {
 
-    const initialState: IStateTodo[] = [{
-        id: new Date().getTime(),
-        desc: 'Learn React',
-        done: false
-    }];
+    const [ todos, dispatch ] = useReducer(todoReducer, [], init);
 
-    const [ todos, dispatch ] = useReducer(todoReducer, initialState);
+    const [ formValues, handleInputChange, reset ] = useForm({
+        description: ''
+    });
+
+    const { description }: FormValues = formValues;
+
+    useEffect( () => {
+        localStorage.setItem('todos', JSON.stringify(todos));
+    }, [todos]);
+
 
     const handleAddToDo = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        if(description.trim().length <= 1) return;
+
         const newTodo = {
             id: new Date().getTime(),
-            desc: 'New Task',
+            desc: description || '',
             done: false
         };
 
@@ -28,6 +45,7 @@ export const TodoApp = () => {
         };
 
         dispatch(action);
+        reset();
     }
 
     return (
@@ -61,8 +79,10 @@ export const TodoApp = () => {
                             name="description"
                             className="form-control"
                             placeholder="Learn..." 
-                            autoComplete="off"/>
-                        
+                            autoComplete="off"
+                            value={description}
+                            onChange={handleInputChange}
+                        />
                         <button 
                             type="submit"
                             className="btn btn-outline-primary mt-1">Add</button>
